@@ -3,6 +3,8 @@ using Abp.Zero.EntityFrameworkCore;
 using MPACore.PhoneBook.Authorization.Roles;
 using MPACore.PhoneBook.Authorization.Users;
 using MPACore.PhoneBook.MultiTenancy;
+using MPACore.PhoneBook.PhoneBooks.Persons;
+using MPACore.PhoneBook.PhoneBooks.PhoneNumbers;
 
 namespace MPACore.PhoneBook.EntityFrameworkCore
 {
@@ -14,5 +16,14 @@ namespace MPACore.PhoneBook.EntityFrameworkCore
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Person>().ToTable("Person", "PB");
+            modelBuilder.Entity<PhoneNumber>().ToTable("PhoneNumber", "PB");
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public DbSet<Person> Persons { get; set; }
     }
 }

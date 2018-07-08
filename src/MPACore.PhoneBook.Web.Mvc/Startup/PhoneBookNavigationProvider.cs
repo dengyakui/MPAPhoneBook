@@ -45,6 +45,12 @@ namespace MPACore.PhoneBook.Web.Startup
                         requiredPermissionName: PermissionNames.Pages_Roles
                     )
                 )
+                .AddItem(new MenuItemDefinition(
+                    PageNames.Persons,
+                    L("Persons"),
+                    url:"Persons",
+                    icon:"info")
+                )
                 .AddItem(
                     new MenuItemDefinition(
                         PageNames.About,
